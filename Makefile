@@ -4,8 +4,8 @@ optimize=-O
 FFLAGS=$(optimize) -ffpe-trap=overflow,invalid,denormal
 CFLAGS=$(optimize)
 #if SAC library has been installed, uncomment the next two lines
-#CFLAGS=$(optimize) -DSAC_LIB
-#SACLIB=-L$(SACHOME)/lib -lsac -lsacio -no-pie
+CFLAGS=$(optimize) -DSAC_LIB
+SACLIB=-L$(SACHOME)/lib -lsac -lsacio -no-pie
 
 FFLAGS=$(optimize) -ffixed-line-length-none
 CFLAGS=$(optimize) -Wno-unused-result
@@ -46,7 +46,6 @@ trav: trav.o tau_p.o
 
 fk2mt: fk2mt.o sacio.o radiats.o
 	$(LINK.f) -o $@ $^ -lm
-
 
 bessel.f: bessel.FF
 	cpp -traditional-cpp $< > $@
