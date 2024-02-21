@@ -1,17 +1,22 @@
+FC=gfortran
+CC=gcc
 optimize=-O
-FC=gfortran -std=legacy
 FFLAGS=$(optimize) -ffpe-trap=overflow,invalid,denormal
 CFLAGS=$(optimize)
 #if SAC library has been installed, uncomment the next two lines
-CFLAGS=$(optimize) -DSAC_LIB
-SACLIB=-L$(SACHOME)/lib -lsac -lsacio
+#CFLAGS=$(optimize) -DSAC_LIB
+#SACLIB=-L$(SACHOME)/lib -lsac -lsacio -no-pie
+
+FFLAGS=$(optimize) -ffixed-line-length-none
+CFLAGS=$(optimize) -Wno-unused-result
+
 # Define the target directory for executables
 BINDIR=bin
 #
 
 SUBS = fft.o Complex.o sacio.o
 FKSUBS = fk.o kernel.o prop.o source.o bessel.o $(SUBS)
-TARGETS = fk syn st_fk trav sachd
+TARGETS = fk syn st_fk trav sachd fk2mt
 
 all: install $(TARGETS)
 
@@ -38,6 +43,10 @@ sachd: sachd.o sacio.o
 trav: trav.o tau_p.o
 	$(LINK.f) -o $@ trav.o tau_p.o -lm
 	mv $@ $(BINDIR)
+
+fk2mt: fk2mt.o sacio.o radiats.o
+	$(LINK.f) -o $@ $^ -lm
+
 
 bessel.f: bessel.FF
 	cpp -traditional-cpp $< > $@

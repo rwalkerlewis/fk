@@ -52,10 +52,10 @@ c for P-SV and z(j)=s(i)*X(5,i) for SH.
 c  input:
 c	s(3,6)	---- source coef. for n=0,1,2
 c	g(7)	---- g vector used to construct matrix X|_ij^12
-c		     |	0   g1  g2 -g3 |
+c		          |  0   g1  g2 -g3 |
 c	 X|_ij^12 =  | -g1  0   g3  g4 | for P-SV.
-c		     | -g2 -g3  0   g5 |
-c		     |  g3 -g4 -g5  0  |
+c		          | -g2 -g3  0   g5 |
+c               |  g3 -g4 -g5  0  |
 c	 X(5,i) = ( g6 g7 )	for SH.
 c  output:
 c	z(3,5)  ---- z vector for n=0,1,2

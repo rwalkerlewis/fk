@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
   case 1:
      if (mtg) {
         mt[0][0]=mt[1][1]=mt[2][2] = 1.;
-	mt[0][1],mt[0][2],mt[1][2] = 0.;
+	mt[0][1]=mt[0][2],mt[1][2] = 0.;
      } else {
         nn = 1;
      }

@@ -35,7 +35,7 @@
 		01/27/91  Lorraine Hwang  Header number is now version 6
 		07/06/93  Xiaoming Ding   structure name sac -> sac_head
 		                          typedef structure to be SACHEAD
-		12/06/96  Lupei Zhu	  prototype sacio functions
+		12/06/96  Lupei Zhu	  prototype sacio functionssac_head_index(const char *name)
 **************************************************************************/
 
 
@@ -316,7 +316,7 @@ int	wrtsac2(const char *, int, const float *x, const float *y);
 SACHEAD	sachdr(float, int, float);
 void	swab4(char *, int);
 void	ResetSacTime(SACHEAD *);
-int	sac_head_inex(const char *name);
+int sac_head_index(const char *name);
 int	testByte(char *);
 
 /* the following two are in libsac.a */
