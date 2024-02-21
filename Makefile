@@ -46,6 +46,7 @@ trav: trav.o tau_p.o
 
 fk2mt: fk2mt.o sacio.o radiats.o
 	$(LINK.f) -o $@ $^ -lm
+	mv $@ $(BINDIR)
 
 bessel.f: bessel.FF
 	cpp -traditional-cpp $< > $@
